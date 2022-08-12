@@ -1,0 +1,127 @@
+%\documentclass[referee]{aa} % for a referee version
+%\documentclass[onecolumn]{aa} % for a paper on 1 column  
+%\documentclass[longauth]{aa} % for the long lists of affiliations 
+%\documentclass[letter]{aa} % for the letters 
+%\documentclass[bibyear]{aa} % if the references are not structured according to the author-year natbib style
+
+\documentclass{aa}  
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc} 
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{txfonts}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{hyperref}
+
+\begin{document}
+
+   \title{Wyznaczenie masy Plejad przy pomocy narzędzi Virtual Observatory.}
+   \subtitle{}
+   \author{Radosław Kluczewski \inst{1}}
+    \institute{Wydział Fizyki, Astronomii i Informatyki Stosowanej Uniwersytetu Jagiellońskiego \\
+        \email{radek.kluczewski@student.uj.edu.pl}
+             }
+\abstract
+  % context heading (optional)
+  % {} leave it empty if necessary  
+   {} 
+  % aims heading (mandatory)
+   {Użycie twierdzenia o wiriale oraz dostępnych baz danych do oszacowania właśności fizycznych gromady otwartej Plejady.}
+  % methods heading (mandatory)
+   {Do opracowania danych zostały użyte następujące programy Virtual Observatory jak Aladin oraz Topcat.}
+  % results heading (mandatory)
+   {Wyznaczenie masy gromady otwartej Plejady oraz innych parametrów fizycznych.}
+  % conclusions heading (optional), leave it empty if necessary 
+   {}
+   \keywords{}
+\maketitle
+%--------------------------------------------------------------------
+\section{Podstawy teoretyczne}
+\textbf{Twierdzenie o wiriale} -- wzór opisujący zależność pomiędzy średnią energią potencjalną a średnią energią kinetyczną układu cząstek. Jego postać to: % Dla pojedynczej cząstki poruszającej się w polu o potencjale $V = a \cdot r^n$ jest spełniona następująca zależność: 
+\begin{equation}
+    2 \cdot \langle E_k \rangle= \langle E_p \rangle.
+\end{equation}
+Twierdzenie to jest  stosowane w fizyce statystycznej, ale również ma zastosowanie w Astronomii. Energia kinetyczna samograwitujących ciał jest powiązania z ich energią potencjalną grawitacji. Dodatkowo zakłada się, że w układzie masy  oraz prędkości cząstek są takie same, tak więc twierdzenie można zapisać w postaci:
+\begin{equation}
+    r = \frac{G \cdot m}{\overline{v} ^ 2},
+    \label{masa}
+\end{equation}
+gdzie G -- stała grawitacji równa odpowiednio $6.6743 \cdot 10 ^ {-11}\left [ m ^ 3 /(kg ^ 2 \cdot s ^ 2) \right ]$, r -- promień efektywny ciała, m -- masa ciała, natomiast $\overline{v} ^ 2$ -- średni kwadrat prędkości cząstek. W tym ćwiczeniu twierdzenie o wiriale zostało użyte do wyznaczenia masy gromady gwiazd jaką są Plejady.
+
+Obliczając odległość d do obiektu wykorzystano następujący wzór:
+\begin{equation}
+    d = \frac{1}{\pi},
+    \label{odleglosc}
+\end{equation}
+gdzie $\pi$ -- paralaksa heliocentryczna. Chcąc wyznaczyć odległość w jednostkach parseków należy podstawić kąt w jednostkach sekund łuku. 
+
+Korzystając z prostej zależności trygonometrycznej można obliczyć prędkość liniową analizowanego obiektu: 
+\begin{equation}
+    v = d \cdot tan(\theta),
+    \label{ruch_wlasny}
+\end{equation}
+gdzie $tan(\theta)$ można traktować w przybliżeniu dla małych kątów jako $\theta$. W powyższym wzorze $\theta$ jest ruchem własnym obiektu niebieskiego na sferze niebieskiej. 
+
+Do obliczenia poprawnego kąta o jaki analizowany obiekt przemieści się na lini współrzędnych na sferze niebieskiej wykorzystano poniższy wzór: 
+\begin{equation}
+    \beta = \theta_\alpha \cdot cos(\delta),
+    \label{poprawka}
+\end{equation}
+gdzie $\theta_\alpha$ -- ruch własny w jednostkach rektastensji, natomiast $\delta$ -- deklinacja obiektu. Powyższa poprawka wynika z tego, iż linia współrzędnej rektascensji nie jest kołem wielkim na sferze niebieskiej. Dlatego chcąc obliczyć poprawny kąt przemieszczenia się obiektu należy zastosować wspomniany wzór. 
+%-----------------------------------------------------------------------
+\section{Wykonanie ćwiczenia}
+W celu wykonania analizy wykorzystano narzędzia Virtual Observatory takie jak Aladin oraz Topcat. Poniżej zostały opisane poszczególne kroki, które zostały poczynione w celu otrzymania finalnego rezultatu jakim są parametry gromady otwartej Plejady. Wszystkie zaprezentowane wyniki zostały zaokrąglone do dwóch miejsc po przecinku. 
+%-----------------------------------------------------------------------
+\subsection{Użycie programu Aladin}
+W celu otrzymania danych dotyczących gwiazd analizowanej gromady otwartej wykorzystano program Aladin oraz katalog [1], który został wyszukany a następnie zaimportowany do programu Topcat. Dodatkowo zostało wyplotowane zdjęcie analizowanej gromady wraz z zaznaczonymi gwiazdami, które zostało przedstawione na  rys.\ref{fig:plejady}. 
+%-----------------------------------------------------------------------
+\subsection{Użycie programu Topcat}
+Po zaimplementowaniu katalogu z gwiazdami oraz zapoznaniu się z poszczególnymi kolumnami  zaczęto analizę danych wejściowych. W tym celu stworzono kolumne odległości w parsekach, która została obliczona przy pomocy wzoru (\ref{odleglosc}) oraz kolumny danych zawierającą paralaksę gwiazd. Dla tak otrzymanej kolumny obliczono średnią oraz odchylenie standardowe średniej reprezentujące błąd średniej: $$\overline{d} = 134.65 \pm 0.22 [pc].$$
+
+Następnie przerachowano ruchy własne gwiazd za pomocą wzoru (\ref{ruch_wlasny}) na prędkości liniowe w [pc/yr]. Dodatkowo założono, że do obliczenia wartości ruchów własnych już zastosowano poprawkę ze względu na deklinację (\ref{poprawka}). Końcowym rezultatem jest otrzymanie wartości średnich prędkości, które zostały przedstawione poniżej dla rektascensji oraz deklinacji: $$\Delta v_{\alpha} = 1.25 \cdot 10^{-5} \left [ \frac{pc}{yr} \right ],$$
+
+$$\Delta v_{\delta} = -2.90 \cdot 10 ^ {-5} \left [ \frac{pc}{yr} \right ].$$
+Otrzymane powyższe wielkości reprezentują ruch własny gromady Plejad na niebie obserwatora ziemskiego. 
+
+Kolejnym krokiem było oddzielenie ruchów własnych poszczególnych gwiazd w rektascensji i deklinacji, od ruchu całej gromady. W tym celu odjęto od kolumny zawierającej prędkości liniowe gwiazd średnią obliczoną w porzednim korku odpowiednio dla poszczególnych współrzędnych. Otrzymane wielkości średnie są niemal równe zeru i wynoszą odpowiednio dla składowej rektascensji: $$\overline{v}_{\alpha(gwiazd)} = 1.32 \cdot 10^{-21} \left [ \frac{pc}{yr} \right ],$$ oraz dla deklinacji: $$\overline{v}_{\delta(gwiazd)} = -2.19 \cdot 10^{-22} \left [ \frac{pc}{yr} \right ].$$
+
+Utworzono następnie kolumnę, która zawierała kwadrat prędkości składowych w rektascensji oraz deklinacji. Obliczono średnią wartość, która prezentuje się następująco: $$\overline{v} ^ 2 = 1.11 \cdot 10 ^ 6 \left [ \frac{m}{s} \right ] ^ 2.$$
+
+Obliczono również składową radialną średniego kwadratu prędkości, gdzie średnia wartość kwadratu prędkości została podzielona przez liczbę dwa. Końcowy wynik wykonanych obliczeń to: $$\overline{v}_{radialna} ^ 2 = 5.55 \cdot 10 ^ 5 \left [ \frac{m}{s} \right ] ^ 2.$$
+
+Ostatecznie obliczoną składową radialną średniego kwadratu prędkości dodano do kwadratu prędkości otrzymując poniższy wynik: $$\overline{v} ^ 2 = 1.67 \cdot 10 ^ 6 \left [ \frac{m}{s} \right ] ^ 2.$$
+
+Przedostatnim krokiem było obliczenie rozmiaru kątowego gromady otwartej Plejad. Tak więc odjęto od kolumny zawirającą maksymalną, kolumnę z minimalną wartością deklinacji. Następnie otrzymaną wartość, która została zaprezentowana poniżej przekonwertowano na parseki: $$d_{Plejad} = 24.50 [pc].$$
+
+Ostatnim kokiem było oszacowanie masy gromady przy wykorzystaniu średniego kwadratu prędkości -- $\overline{v} ^ 2$ oraz rozmiar gromady -- $d_{Plejad}$. Dodatkowo wykorzystano twierdzenie o wiriale w postaci (\ref{masa}). Otrzymana masa gromady otwartej Plejad to: $$m = 9.47 \cdot 10 ^ {33} [kg].$$
+%-----------------------------------------------------------------------
+\section{Dyskusja wyników}
+Korzystając z programów Virtual Observatory takich jak Aladin oraz Topcat wyznaczono szukane parametry gromadej otwartej Plejad. Korzystając z literatury [2] odczytano wartość odległości do Plejad, która wynosi $135 \pm 0.22 [pc].$ Wartość ta jest zgodna z dokładnością do $\pm 0.035 [pc]$ z wartością wyznaczoną w ćwiczeniu równą $134.65 [pc].$ 
+
+Analogicznie porównano wyznaczoną masę Plejad z masą zaczerpniętą z literatury [3]. Wartość podawana w literaturze to $1.6 \cdot 10 ^ {33} [kg]$, natomiast wartość wyznaczona podczas opracowywania danych to $9.47 \cdot 10 ^ {33} [kg].$ Jak można zauważyć wyznaczona wartość jest porównywalna rzędem wielkości z przykładowej literatury, ale znacznie mniejsza. Jedną z przyczyn tego może być błąd gruby wyznaczenia mas i prędkości gwiazd, które znajdują się w katalogu zaczerpniętym z programu Aladin. Dodatkowo kolejną przyczyną jest możliwe zawyżenie oszacowania składowej prędkości radialnej. Może przyjmować one różne wartości jak na przykład wartość równą zeru. Ten przypadek występuje, gdy oś obrotu gromady jest zwrócona ku obserwatorowi spoczywającemu na ziemi. Założyliśmy również, że prędkość i masa każdej gwiazdy są takie same, czyli równe odpowiednim wartościom średnim. Założenie to zostalo wprowadzone, ponieważ nie był znany dokładny rozkład mas i prędkości przez co nie pozwalało to na dokładne wyznaczenie energii potencjalnej oraz kinetycznej, w celu wyprowadzenia wzoru (\ref{masa}). Konsekwencją poczynionego założenia może być błędne oszacowanie masy. 
+
+%-----------------------------------------------------------------------
+\section{Referencje}
+\begin{enumerate}
+\item Joseph D. Adams et al. ,,The Mass and Structure of the Pleiades Star''
+\item D.J. Pinfield, R.F. Jameson, S.T. Hodgkin, ,,The mass of the Pleiades'', Monthly Notices of the Royal Astronomical Society, Volume 299, Issue 4, October 1998, Pages 955–964
+\item P. A. B. Galli et al. ,,VizieR Online Data Catalog: Parallaxes for 1146 Pleia-
+des stars (Galli+, 2017)''
+\end{enumerate}
+
+\begin{figure*}
+    \centering
+    \includegraphics[scale=0.4]{radek.eps}
+    \caption{Zdjęcie optyczne DSS2 gromady otwartej Plejad wraz z zaznaczonymi na czerwono gwiazdami z katalogu [1].}
+    \label{fig:plejady}
+\end{figure*}
+
+%--------------------------------------------------------------------
+
+
+\end{document}
