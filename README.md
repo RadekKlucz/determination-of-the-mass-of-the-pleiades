@@ -1,11 +1,25 @@
-# determination-of-the-mass-of-the-pleiades
-# :milky_way: Astronomical data analysis project
+# :milky_way: Determination-of-the-mass-of-the-pleiades
 
-Project in R language using astronomical data provided from <>. All theoretical information is available in the report folder in pdf or html format.
+Project in R language using astronomical. All theoretical information is available in the report folder in pdf or html format.
+
+## :keyboard: About source code
+
+The script seems to be trying to analyze data of mass star cluster by performing calculations and creating visualizations.
+
+Here is a brief summary of what the script is doing:
+
+1. Loading the data from the file pleiades.txt.
+2. Defining functions compute_degrees() and generall_function() to calculate the right ascension, declination, and other values.
+3. Calculating the right ascension and declination in hours and degrees, respectively.
+4. Calculating the average distance and average proper motions in right ascension and declination directions.
+5. Correcting proper motions for the average values and calculating the velocity in meters per second.
+6. Calculating the size of the star cluster in meters and its mass using the velocity dispersion.
+7. Sorting the data by the distance from the cluster center and splitting it into 19 parts.
+8. Calculating the 90th percentile of each part of the data and storing it in a list.
+
 
 ## 🧑‍💻 Technology stack
 
-* Docker
 * R language
   * nortest
   * outliers
@@ -13,23 +27,7 @@ Project in R language using astronomical data provided from <>. All theoretical 
 * RStudio
 * LaTeX
 
-## 🔥 How to run with Docker
-
-1. Clone the repository to your computer,
-2. Open PowerShell/bash or another terminal at the folder with project and run the following command:
-
-```cmd
-docker compose up --build
-```
-
-3. Copy the last link from the terminal to your favorite browser to run jupiter notebook,
-4. Enjoy the data project.
-
-### 🐋 Container
-
-Base Jupyter Notebook Stack -- python environment to run all files and modules
-
-## 🎆 How to run without Docker
+## 🎆 How to run
 
 1. Install R language and RStudio,
 2. Clone the repository to your computer,
@@ -38,9 +36,6 @@ Base Jupyter Notebook Stack -- python environment to run all files and modules
 
 ## 🌠 Features
 
-🌟 **Docker containerisation and orchestration**
-
-🌟 **Natural Language Processing**
 
 🌟 **Data Manipulation in R**
 
@@ -48,7 +43,7 @@ Base Jupyter Notebook Stack -- python environment to run all files and modules
 
 🌟 **Statistical skills**
 
-🌟
+🌟 **Data analysis**
 
 ## 📁 Directory Structure
 
